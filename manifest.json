@@ -1,0 +1,84 @@
+{
+	"name": "Pages",
+	"slug": "pages",
+	"unit": "page",
+	"units": "pages",
+
+	"rights": [
+		{
+			"key": "view",
+			"description": "View existing pages"
+		},
+		{
+			"key": "create",
+			"description": "Create new pages"
+		},
+		{
+			"key": "update",
+			"description": "Update existing pages"
+		},
+		{
+			"key": "delete",
+			"description": "Remove pages"
+		}
+	],
+
+	"formSpec": {
+		"method": "post",
+		"action": "/pages/new",
+		"save": {},
+		"pager": {
+			"type": "tabbed",
+			"position": "top"
+		},
+		"pages": [
+			{
+				"name": "Meta",
+				"groups": ["group1"]
+			},
+			{
+				"name": "Content",
+				"groups": ["zones"]
+			}
+		],
+		"groups": {
+			"group1": {
+				"fields": ["name", "summary"]
+			},
+			"zones": {
+				"fields": ["template", "zones"]
+			}
+		},
+		"fields": {
+			"name": {
+				"type": "text",
+				"label": "Name"
+			},
+			"summary": {
+				"type": "textarea",
+				"label": "Summary"
+			},
+			"template": {
+				"type": "single_option",
+				"label": "Page template",
+				"options": [
+					{"value": "single-column"},
+					{"value": "menu-left"}
+				]
+			},
+			"zones": {
+				"type": "zone_builder",
+				"link": "template"
+			}
+		}
+	},
+
+	"listSpec": {
+		"fields": [
+			{
+				"name": "name",
+				"label": "Name"
+			}
+		]
+	}
+}
