@@ -28,47 +28,51 @@
 		"action": "/pages/new",
 		"save": {},
 		"pager": {
-			"type": "tabbed",
+			"type": "named",
 			"position": "top"
 		},
 		"pages": [
 			{
-				"name": "Meta",
-				"groups": ["group1"]
+				"name": "Details",
+				"groups": "group1"
 			},
 			{
 				"name": "Content",
-				"groups": ["zones"]
+				"groups": "zones"
 			}
 		],
 		"groups": {
 			"group1": {
-				"fields": ["name", "summary"]
+				"fields": ["title", "slug", "summary"]
 			},
 			"zones": {
 				"fields": ["template", "zones"]
 			}
 		},
 		"fields": {
-			"name": {
+			"title": {
 				"type": "text",
-				"label": "Name"
+				"label": "Title"
+			},
+			"slug": {
+				"type": "text",
+				"label": "Slug"
 			},
 			"summary": {
-				"type": "textarea",
+				"type": "expanding_textarea",
 				"label": "Summary"
 			},
 			"template": {
 				"type": "single_option",
 				"label": "Page template",
 				"options": [
-					{"value": "single-column"},
-					{"value": "menu-left"}
+					{ "value": "menu-left" },
+					{ "value": "single-column" }
 				]
 			},
 			"zones": {
 				"type": "zone_builder",
-				"link": "template"
+				"subscribe": "template"
 			}
 		}
 	},
@@ -76,8 +80,12 @@
 	"listSpec": {
 		"fields": [
 			{
-				"name": "name",
-				"label": "Name"
+				"name": "title",
+				"label": "Title"
+			},
+			{
+				"name": "slug",
+				"label": "Slug"
 			}
 		]
 	}
